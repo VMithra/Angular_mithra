@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="multiple">
+<head><title>Multicontroller</title>
+<script src="C:\Users\Mithra\Documents\MeanStack\angular.min.js"></script>
+<script>
+var app = angular.module('multiple', []);
+app.controller("myCtrl", function($scope,$rootScope) {
+    $scope.login =true;
+    $rootScope.home = false;
+	$scope.getsvalue=function(){
+	$scope.login=false;
+	$rootScope.home=true;
+	$rootScope.display="Username : "+$scope.name;
+	}
+	}).controller("second",function($scope){
+});
+</script>
+</head>
+<body>
+<div ng-controller="myCtrl" ng-show="login">
+<p>USER NAME : <input type="text" name="name" ng-model="name"></p><br>
+<p>PASSWORD  : <input type="password" name="pw" ng-model="password"></p><br>
+<button ng-click="getsvalue();">Submit</button>
+</div>
+<div ng-controller="second" ng-show="home">
+{{display}}
+</div>
+</body>
+</html>
