@@ -1,0 +1,38 @@
+<!Doctype html>
+<html>
+<script src="C:\Users\Mithra\Documents\MeanStack\angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.persons =[];
+    $scope.add = function(persons){
+	var user={fname:$scope.firstname,
+               lname:$scope.lastname};
+	$scope.persons.push(user);}
+	$scope.remove=function(index){
+	  $scope.persons.splice(index,1);
+	 // $scope.persons.pop();
+	}
+});
+</script>
+<head><title>Add/Remove</title>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+<form>
+<p>First Name:
+<input type="text" name="name" ng-model="firstname"></p><br>
+<p>Last Name:
+<input type="text" name="name" ng-model="lastname"></p>
+<input type="submit" value="Submit" ng-model="Add" ng-click="add()">
+</form>
+<table>
+<tr ng-repeat="x in persons"><br><br>
+<td>{{x.fname}}</td>
+<td>{{x.lname}}</td>
+<td><button ng-click="remove($index)">Remove</button></td>
+</tr>
+</table>
+</div>
+</body>
+</html>
