@@ -1,0 +1,24 @@
+<!Doctype html>
+<html>
+<script src="C:\Users\Mithra\Documents\MeanStack\angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.hi = "Hello";
+    $scope.hii = "Welcome";
+});
+</script>
+<head><title>Controller</title>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+<form>
+<p>First Name:
+<input type="text" name="name" ng-model="firstname"></p><br><br>
+<p>Last Name:
+<input type="text" name="name" ng-model="lastname"></p>
+<h1>{{hi}} {{ firstname }} {{ lastname }} {{hii}}</h1>
+</form>
+</div>
+</body>
+</html>
