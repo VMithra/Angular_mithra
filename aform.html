@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<script src="C:\Users\Mithra\Documents\MeanStack\angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.name = "";
+	$scope.address="";
+	$scope.gender="";
+	$scope.branch="";
+	$scope.course="";
+    $scope.country="";	
+	$scope.getvalues=function(){
+	//alert($scope.course);
+	//$scope.details=true;
+	return $scope.details=$scope.name+'\n' + $scope.address +'\n'+ $scope.gender+'\n' + $scope.branch +'\n'+$scope.course +'\n'+ $scope.country;
+	}
+});
+function checkbox(){
+				var items=document.getElementsByName('course');
+				var selectedItems="";
+				for(var i=0; i<items.length; i++){
+					if(items[i].type=='checkbox' && items[i].checked==true)
+						selectedItems+=items[i].value+"\n";
+				}
+				alert('Course selected : '+ selectedItems +'\nOther details are given below..');
+			}			
+</script>
+<head><title>ScopeForm</title>
+</head>
+<body style="background-color:pink;">
+<div ng-controller="myCtrl">
+<fieldset>
+<legend>FORM</legend><br><b>
+  Name:</b>
+  <input type="text" name="name" required="required" maxlength="25" size="45" ng-model="name" >
+  <br><br><b>
+  Address:</b><br>
+  <textarea name="address" rows="3" cols="43" required="required" ng-model="address" >
+</textarea>
+ <br><br><b>
+  Gender:</b>
+  <input type="radio" name="gender" value="male" ng-model="gender"> Male
+  <input type="radio" name="gender" value="female" ng-model="gender" > Female<br><br>
+    <b>Select Branch:</b><select name="branch" ng-model="branch">
+    <option value="aero">AERO</option>
+    <option value="civil">CIVIL</option>
+    <option value="cse">CSE</option>
+    <option value="ece">ECE</option>
+	<option value="eee">EEE</option>
+    <option value="eie">EIE</option>
+    <option value="it">IT</option>
+    <option value="mech">MECH</option>
+  </select><br><br>
+  <b>Select Course:</b><table>
+  <tr><td><input type="checkbox" name="course"  ng-model="course1" value="Advanced Programming"  > Advanced Programming</td></tr><br>
+  <tr><td><input type="checkbox" name="course"  ng-model="course2" value="Mean Stack" > Mean Stack</td></tr><br>
+  <tr><td><input type="checkbox" name="course"  ng-model="course3" value="Business Development"> Business Development</td></tr></table><br>
+  <br>
+  <b>Select Country:</b><select name="country"  ng-model="country">
+    <option value="india">INDIA</option>
+    <option value="pakistan">PAKISTAN</option>
+    <option value="australia">AUSTRALIA</option>
+    <option value="others">OTHERS</option></select><br><br>
+	<center><input type="submit" value="Submit" ng-click="getvalues();" onClick="checkbox()"></center>
+ </fieldset>
+<div ng-show="details">
+View your details:{{details}}
+</div>
+</div>
+</body>
+</html>
